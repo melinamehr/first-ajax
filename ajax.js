@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 var button = document.getElementById('run_request');
 var pingPong = document.getElementById('ping_pong');
-var sectionOne = document.querySelector('section');
+var sec = document.querySelector('#step3456');
 
   $.ajax({
     url: 'http://first-ajax-api.herokuapp.com/',
@@ -17,19 +17,22 @@ var sectionOne = document.querySelector('section');
 
 
   $.ajax({
-    url: 'http://first-ajax-api.herokuapp.com/ping',
+    url: 'http://first-ajax-api.herokuapp.com/pong',
     method: 'GET',
     data: '{}',
     dataType: 'text'
   }).done(function (responseData) {
     console.log(responseData)
-
-    sectionOne.append(responseData)
+    sec.append(responseData)
+  }).fail(function () {
+    var failMessage = "Didn't work but we'll try again!";
+    pingPong.addEventListener('click', function() {
+      console.log(failMessage)
+    });
+    sec.append(failMessage);
 
   });
 
-  pingPong.addEventListener('click', function() {
-    console.log('CLICKED PINGPONG BUTTON')
-  });
+
 
 });
