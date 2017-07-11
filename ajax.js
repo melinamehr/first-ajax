@@ -30,9 +30,9 @@ var sec = document.querySelector('#step3456');
       console.log(failMessage)
     });
     sec.append(failMessage);
-
-  });
-
-
-
+  }).always(function() {
+    var alwaysMessage = "Hey the request finished!"
+    console.log(alwaysMessage)
+    sec.append(alwaysMessage);
+    });
 });
